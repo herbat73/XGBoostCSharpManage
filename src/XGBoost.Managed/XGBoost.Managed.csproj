@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <RootNamespace>XGBoost</RootNamespace>
+    <AssemblyName>XGBoost.Managed</AssemblyName>
+    <LangVersion>latest</LangVersion>
+    <IsAotCompatible>true</IsAotCompatible>
+    <!-- Internals mirror the C++ sources; only the XGBoost namespace facade is documented. -->
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+
+    <PackageId>XGBoost.Managed</PackageId>
+    <Version>3.5.0-dev</Version>
+    <Description>Fully managed C# port of the XGBoost library (CPU).</Description>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="XGBoost.Managed.Tests" />
+  </ItemGroup>
+
+</Project>

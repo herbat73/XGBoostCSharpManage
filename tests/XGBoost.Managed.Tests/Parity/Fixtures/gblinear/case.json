@@ -1,0 +1,240 @@
+{
+ "name": "gblinear",
+ "description": "Linear booster with coordinate descent.",
+ "xgboost_version": "3.5.0-dev",
+ "params": [
+  [
+   "seed",
+   "0"
+  ],
+  [
+   "nthread",
+   "1"
+  ],
+  [
+   "booster",
+   "gblinear"
+  ],
+  [
+   "objective",
+   "reg:squarederror"
+  ],
+  [
+   "updater",
+   "coord_descent"
+  ],
+  [
+   "feature_selector",
+   "cyclic"
+  ],
+  [
+   "lambda",
+   "0.1"
+  ],
+  [
+   "validate_parameters",
+   "True"
+  ]
+ ],
+ "num_boost_round": 20,
+ "early_stopping_rounds": null,
+ "custom_objective": null,
+ "datasets": {
+  "train": {
+   "rows": 300,
+   "cols": 6,
+   "kind": "dense",
+   "data": {
+    "file": "train_x.bin",
+    "dtype": "f4",
+    "shape": [
+     300,
+     6
+    ]
+   },
+   "info": {
+    "label": {
+     "file": "train_label.bin",
+     "dtype": "f4",
+     "shape": [
+      300
+     ]
+    }
+   },
+   "feature_names": [
+    "f_a",
+    "f_b",
+    "f_c",
+    "f_d",
+    "f_e",
+    "f_f"
+   ],
+   "feature_types": null
+  },
+  "valid": {
+   "rows": 100,
+   "cols": 6,
+   "kind": "dense",
+   "data": {
+    "file": "valid_x.bin",
+    "dtype": "f4",
+    "shape": [
+     100,
+     6
+    ]
+   },
+   "info": {
+    "label": {
+     "file": "valid_label.bin",
+     "dtype": "f4",
+     "shape": [
+      100
+     ]
+    }
+   },
+   "feature_names": [
+    "f_a",
+    "f_b",
+    "f_c",
+    "f_d",
+    "f_e",
+    "f_f"
+   ],
+   "feature_types": null
+  }
+ },
+ "expected": {
+  "boosted_rounds": 20,
+  "num_features": 6,
+  "best_iteration": null,
+  "best_score": null,
+  "eval_history": {
+   "train": {
+    "rmse": [
+     0.9363264985834676,
+     0.8596612823127672,
+     0.8013014778986005,
+     0.756745342176262,
+     0.7226356149444606,
+     0.6964502742041958,
+     0.6762877917224553,
+     0.6607101001865916,
+     0.6486270898267832,
+     0.6392111590322448,
+     0.6318334141167834,
+     0.6260157878602749,
+     0.6213947349853981,
+     0.6176938395034476,
+     0.6147027641393242,
+     0.6122614054381836,
+     0.6102478179401307,
+     0.6085689930380287,
+     0.6071538067416502,
+     0.6059478316906404
+    ]
+   },
+   "valid": {
+    "rmse": [
+     1.0135252042199419,
+     0.9320046412374455,
+     0.8702255569579139,
+     0.823222818707053,
+     0.7872946353345983,
+     0.7596935627931254,
+     0.7383730533359858,
+     0.7218023703748219,
+     0.7088327483159177,
+     0.6985997638728151,
+     0.690451829768514,
+     0.6838972772408068,
+     0.6785648046226284,
+     0.6741739055600021,
+     0.6705124356752589,
+     0.6674198884415995,
+     0.6647745730171092,
+     0.6624841320633078,
+     0.6604781059686098,
+     0.6587027335052575
+    ]
+   }
+  },
+  "predictions": {
+   "train_value": {
+    "data": "train",
+    "type": "value",
+    "file": "pred_train_value.bin",
+    "dtype": "f4",
+    "shape": [
+     300
+    ]
+   },
+   "train_margin": {
+    "data": "train",
+    "type": "margin",
+    "file": "pred_train_margin.bin",
+    "dtype": "f4",
+    "shape": [
+     300
+    ]
+   },
+   "valid_value": {
+    "data": "valid",
+    "type": "value",
+    "file": "pred_valid_value.bin",
+    "dtype": "f4",
+    "shape": [
+     100
+    ]
+   },
+   "valid_margin": {
+    "data": "valid",
+    "type": "margin",
+    "file": "pred_valid_margin.bin",
+    "dtype": "f4",
+    "shape": [
+     100
+    ]
+   },
+   "valid_contrib": {
+    "data": "valid",
+    "type": "contribution",
+    "file": "pred_valid_contrib.bin",
+    "dtype": "f4",
+    "shape": [
+     100,
+     7
+    ]
+   }
+  },
+  "feature_score": {
+   "weight": {
+    "f_a": [
+     1.2507944107055664
+    ],
+    "f_b": [
+     -0.953215479850769
+    ],
+    "f_c": [
+     0.05858607217669487
+    ],
+    "f_d": [
+     0.12181712687015533
+    ],
+    "f_e": [
+     -0.06072665750980377
+    ],
+    "f_f": [
+     0.03758662939071655
+    ]
+   }
+  },
+  "dump_text": [
+   "bias:\n-0.269976\nweight:\n1.25079\n-0.953215\n0.0585861\n0.121817\n-0.0607267\n0.0375866\n"
+  ],
+  "dump_json": [
+   "  { \"bias\": [\n      -0.269976\n    ],\n    \"weight\": [\n      1.25079,\n      -0.953215,\n      0.0585861,\n      0.121817,\n      -0.0607267,\n      0.0375866\n    ]\n  }"
+  ],
+  "model_json": "model.json",
+  "model_ubj": "model.ubj"
+ }
+}

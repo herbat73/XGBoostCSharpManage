@@ -1,0 +1,372 @@
+{
+ "name": "csr_approx",
+ "description": "Sparse CSR input with the approx tree method.",
+ "xgboost_version": "3.5.0-dev",
+ "params": [
+  [
+   "seed",
+   "0"
+  ],
+  [
+   "nthread",
+   "1"
+  ],
+  [
+   "objective",
+   "binary:logistic"
+  ],
+  [
+   "tree_method",
+   "approx"
+  ],
+  [
+   "max_depth",
+   "4"
+  ],
+  [
+   "validate_parameters",
+   "True"
+  ]
+ ],
+ "num_boost_round": 15,
+ "early_stopping_rounds": null,
+ "custom_objective": null,
+ "datasets": {
+  "train": {
+   "rows": 300,
+   "cols": 6,
+   "kind": "csr",
+   "indptr": {
+    "file": "train_indptr.bin",
+    "dtype": "i8",
+    "shape": [
+     301
+    ]
+   },
+   "indices": {
+    "file": "train_indices.bin",
+    "dtype": "u4",
+    "shape": [
+     720
+    ]
+   },
+   "values": {
+    "file": "train_values.bin",
+    "dtype": "f4",
+    "shape": [
+     720
+    ]
+   },
+   "info": {
+    "label": {
+     "file": "train_label.bin",
+     "dtype": "f4",
+     "shape": [
+      300
+     ]
+    }
+   },
+   "feature_names": null,
+   "feature_types": null
+  },
+  "valid": {
+   "rows": 100,
+   "cols": 6,
+   "kind": "csr",
+   "indptr": {
+    "file": "valid_indptr.bin",
+    "dtype": "i8",
+    "shape": [
+     101
+    ]
+   },
+   "indices": {
+    "file": "valid_indices.bin",
+    "dtype": "u4",
+    "shape": [
+     240
+    ]
+   },
+   "values": {
+    "file": "valid_values.bin",
+    "dtype": "f4",
+    "shape": [
+     240
+    ]
+   },
+   "info": {
+    "label": {
+     "file": "valid_label.bin",
+     "dtype": "f4",
+     "shape": [
+      100
+     ]
+    }
+   },
+   "feature_names": null,
+   "feature_types": null
+  }
+ },
+ "expected": {
+  "boosted_rounds": 15,
+  "num_features": 6,
+  "best_iteration": null,
+  "best_score": null,
+  "eval_history": {
+   "train": {
+    "logloss": [
+     0.5038141437371572,
+     0.41500868623455367,
+     0.35451037928462026,
+     0.3051794215043386,
+     0.26642091949780783,
+     0.2351928578565518,
+     0.20862716893355052,
+     0.18580682211865981,
+     0.1678520686800281,
+     0.152666519669195,
+     0.1399565452275177,
+     0.1290791846625507,
+     0.11951962944120169,
+     0.11241766468932231,
+     0.1052127961969624
+    ]
+   },
+   "valid": {
+    "logloss": [
+     0.5367436644434929,
+     0.46582877218723295,
+     0.42301872491836545,
+     0.3952946609258652,
+     0.36721379108726976,
+     0.33666237570345403,
+     0.3051966646686196,
+     0.29722969833761453,
+     0.2760219616815448,
+     0.25818155756220224,
+     0.24754829047247767,
+     0.23730721693485976,
+     0.22919814092107116,
+     0.22598942677490413,
+     0.22010957732796668
+    ]
+   }
+  },
+  "predictions": {
+   "train_value": {
+    "data": "train",
+    "type": "value",
+    "file": "pred_train_value.bin",
+    "dtype": "f4",
+    "shape": [
+     300
+    ]
+   },
+   "train_margin": {
+    "data": "train",
+    "type": "margin",
+    "file": "pred_train_margin.bin",
+    "dtype": "f4",
+    "shape": [
+     300
+    ]
+   },
+   "valid_value": {
+    "data": "valid",
+    "type": "value",
+    "file": "pred_valid_value.bin",
+    "dtype": "f4",
+    "shape": [
+     100
+    ]
+   },
+   "valid_margin": {
+    "data": "valid",
+    "type": "margin",
+    "file": "pred_valid_margin.bin",
+    "dtype": "f4",
+    "shape": [
+     100
+    ]
+   },
+   "valid_contrib": {
+    "data": "valid",
+    "type": "contribution",
+    "file": "pred_valid_contrib.bin",
+    "dtype": "f4",
+    "shape": [
+     100,
+     7
+    ]
+   },
+   "valid_leaf": {
+    "data": "valid",
+    "type": "leaf",
+    "file": "pred_valid_leaf.bin",
+    "dtype": "f4",
+    "shape": [
+     100,
+     15
+    ]
+   },
+   "valid_value_half": {
+    "data": "valid",
+    "type": "value",
+    "iteration_end": 7,
+    "file": "pred_valid_value_half.bin",
+    "dtype": "f4",
+    "shape": [
+     100
+    ]
+   },
+   "valid_inplace_value": {
+    "data": "valid",
+    "type": "value",
+    "inplace": true,
+    "file": "pred_valid_inplace_value.bin",
+    "dtype": "f4",
+    "shape": [
+     100
+    ]
+   }
+  },
+  "feature_score": {
+   "weight": {
+    "f0": [
+     19.0
+    ],
+    "f1": [
+     23.0
+    ],
+    "f2": [
+     23.0
+    ],
+    "f3": [
+     18.0
+    ],
+    "f4": [
+     22.0
+    ],
+    "f5": [
+     25.0
+    ]
+   },
+   "gain": {
+    "f0": [
+     6.315871238708496
+    ],
+    "f1": [
+     4.491565227508545
+    ],
+    "f2": [
+     4.274449348449707
+    ],
+    "f3": [
+     4.647943019866943
+    ],
+    "f4": [
+     4.75377893447876
+    ],
+    "f5": [
+     4.506565093994141
+    ]
+   },
+   "cover": {
+    "f0": [
+     21.1591739654541
+    ],
+    "f1": [
+     14.92190933227539
+    ],
+    "f2": [
+     17.152694702148438
+    ],
+    "f3": [
+     20.943532943725586
+    ],
+    "f4": [
+     18.0570125579834
+    ],
+    "f5": [
+     14.253396034240723
+    ]
+   },
+   "total_gain": {
+    "f0": [
+     120.00155639648438
+    ],
+    "f1": [
+     103.30599975585938
+    ],
+    "f2": [
+     98.31233978271484
+    ],
+    "f3": [
+     83.66297149658203
+    ],
+    "f4": [
+     104.58313751220703
+    ],
+    "f5": [
+     112.66413116455078
+    ]
+   },
+   "total_cover": {
+    "f0": [
+     402.0243225097656
+    ],
+    "f1": [
+     343.20391845703125
+    ],
+    "f2": [
+     394.511962890625
+    ],
+    "f3": [
+     376.98358154296875
+    ],
+    "f4": [
+     397.2542724609375
+    ],
+    "f5": [
+     356.33489990234375
+    ]
+   }
+  },
+  "dump_text": [
+   "0:[f0<0.397783726] yes=1,no=2,missing=1,gain=40.5822144,cover=69.1200027\n\t1:[f4<0.124481127] yes=3,no=4,missing=3,gain=40.4976883,cover=52.3008041\n\t\t3:[f1<0.558127403] yes=5,no=6,missing=5,gain=33.0352325,cover=33.638401\n\t\t\t5:[f5<0.638294101] yes=9,no=10,missing=9,gain=38.0384979,cover=28.1088009\n\t\t\t\t9:leaf=-0.588142753,cover=24.4224014\n\t\t\t\t10:leaf=0.368726552,cover=3.68640018\n\t\t\t6:[f1<0.698898256] yes=11,no=12,missing=12,gain=1.96640968,cover=5.52960014\n\t\t\t\t11:leaf=-0.0278810319,cover=1.15200007\n\t\t\t\t12:leaf=0.381582886,cover=4.37760019\n\t\t4:[f3<1.99632776] yes=7,no=8,missing=8,gain=7.52785587,cover=18.6624012\n\t\t\t7:leaf=0.417034447,cover=8.06400013\n\t\t\t8:[f2<0.17588298] yes=13,no=14,missing=13,gain=12.3511124,cover=10.5984001\n\t\t\t\t13:leaf=-0.219366267,cover=6.2208004\n\t\t\t\t14:leaf=0.381582886,cover=4.37760019\n\t2:leaf=0.391936809,cover=16.8192005\n",
+   "0:[f3<0.085506171] yes=1,no=2,missing=1,gain=24.2973461,cover=66.5186996\n\t1:[f0<0.397783726] yes=3,no=4,missing=3,gain=21.1185493,cover=42.6710358\n\t\t3:[f2<0.339292765] yes=7,no=8,missing=7,gain=20.2666931,cover=34.089817\n\t\t\t7:[f1<0.506379604] yes=13,no=14,missing=13,gain=18.4119644,cover=26.0268211\n\t\t\t\t13:leaf=-0.45304957,cover=22.36973\n\t\t\t\t14:leaf=0.223493218,cover=3.6570909\n\t\t\t8:[f4<0.984687328] yes=15,no=16,missing=16,gain=2.78015685,cover=8.06299496\n\t\t\t\t15:leaf=0.328660309,cover=3.80610752\n\t\t\t\t16:leaf=-0.00346297934,cover=4.25688791\n\t\t4:[f0<0.606410861] yes=9,no=10,missing=10,gain=0.435609818,cover=8.58122063\n\t\t\t9:leaf=0.0966707245,cover=2.19519591\n\t\t\t10:leaf=0.317358851,cover=6.38602448\n\t2:[f2<0.969848096] yes=5,no=6,missing=6,gain=3.60751724,cover=23.847662\n\t\t5:leaf=0.390155792,cover=9.26215363\n\t\t6:[f4<0.171915606] yes=11,no=12,missing=11,gain=4.34504557,cover=14.5855083\n\t\t\t11:[f0<0.0746014789] yes=17,no=18,missing=17,gain=7.08389711,cover=9.63939857\n\t\t\t\t17:leaf=-0.186003551,cover=5.7390008\n\t\t\t\t18:leaf=0.288105428,cover=3.90039802\n\t\t\t12:leaf=0.342619658,cover=4.94610929\n",
+   "0:[f2<0.482935965] yes=1,no=2,missing=1,gain=15.5064411,cover=61.4896584\n\t1:[f0<0.272985965] yes=3,no=4,missing=3,gain=16.6226749,cover=49.634552\n\t\t3:[f3<0.565474093] yes=7,no=8,missing=7,gain=15.8771601,cover=36.2302856\n\t\t\t7:[f5<0.669677854] yes=11,no=12,missing=11,gain=17.1020298,cover=31.0538521\n\t\t\t\t11:leaf=-0.314686358,cover=28.1656284\n\t\t\t\t12:leaf=0.367335618,cover=2.88822222\n\t\t\t8:leaf=0.288104355,cover=5.17643547\n\t\t4:[f0<0.606410861] yes=9,no=10,missing=10,gain=1.73568392,cover=13.4042635\n\t\t\t9:[f1<0.161696807] yes=13,no=14,missing=13,gain=2.12707067,cover=5.63024139\n\t\t\t\t13:leaf=-0.0614255518,cover=3.72998643\n\t\t\t\t14:leaf=0.268895745,cover=1.90025496\n\t\t\t10:leaf=0.304669529,cover=7.77402258\n\t2:[f2<0.588319957] yes=5,no=6,missing=6,gain=0.431920052,cover=11.8551083\n\t\t5:leaf=0.103396855,cover=1.9198637\n\t\t6:leaf=0.34098798,cover=9.93524456\n",
+   "0:[f4<0.124481127] yes=1,no=2,missing=1,gain=15.0512047,cover=56.5709\n\t1:[f1<0.0656292662] yes=3,no=4,missing=3,gain=12.7138138,cover=37.603756\n\t\t3:[f2<0.604047954] yes=7,no=8,missing=7,gain=7.42449856,cover=23.1361046\n\t\t\t7:[f5<0.617926002] yes=13,no=14,missing=13,gain=7.89364243,cover=20.2784576\n\t\t\t\t13:leaf=-0.338671714,cover=18.6672802\n\t\t\t\t14:leaf=0.24558264,cover=1.61117661\n\t\t\t8:[f2<0.75854212] yes=15,no=16,missing=16,gain=0.383889437,cover=2.85764718\n\t\t\t\t15:leaf=0.0376506671,cover=1.50576079\n\t\t\t\t16:leaf=0.263167679,cover=1.35188639\n\t\t4:[f5<0.144829243] yes=9,no=10,missing=9,gain=4.07554245,cover=14.4676523\n\t\t\t9:[f0<0.0746014789] yes=17,no=18,missing=17,gain=5.68888426,cover=9.11161423\n\t\t\t\t17:leaf=-0.202613458,cover=4.85336399\n\t\t\t\t18:leaf=0.227319121,cover=4.25825071\n\t\t\t10:leaf=0.314017892,cover=5.35603762\n\t2:[f2<0.128973112] yes=5,no=6,missing=6,gain=1.72778416,cover=18.9671402\n\t\t5:leaf=-0.0585606396,cover=1.31752646\n\t\t6:[f1<0.102301821] yes=11,no=12,missing=12,gain=0.924800873,cover=17.6496143\n\t\t\t11:leaf=-0.00479544187,cover=1.08775771\n\t\t\t12:[f4<0.456555486] yes=19,no=20,missing=20,gain=0.395936012,cover=16.5618572\n\t\t\t\t19:leaf=0.156324923,cover=5.42016792\n\t\t\t\t20:leaf=0.316443443,cover=11.1416893\n",
+   "0:[f3<0.214009851] yes=1,no=2,missing=1,gain=11.2850857,cover=51.7377205\n\t1:[f5<0.367344201] yes=3,no=4,missing=3,gain=9.90667248,cover=36.711338\n\t\t3:[f4<0.575537264] yes=7,no=8,missing=7,gain=8.1729126,cover=28.3273621\n\t\t\t7:[f2<0.709108412] yes=13,no=14,missing=13,gain=7.78237152,cover=22.7811375\n\t\t\t\t13:leaf=-0.288301915,cover=20.3023281\n\t\t\t\t14:leaf=0.212474704,cover=2.47881031\n\t\t\t8:[f4<0.803219795] yes=15,no=16,missing=16,gain=1.23934472,cover=5.54622507\n\t\t\t\t15:leaf=0.0261413418,cover=3.47476149\n\t\t\t\t16:leaf=0.296258122,cover=2.07146382\n\t\t4:[f5<0.617926002] yes=9,no=10,missing=10,gain=1.18534374,cover=8.38397408\n\t\t\t9:[f5<0.489076376] yes=17,no=18,missing=18,gain=1.29247618,cover=4.36818314\n\t\t\t\t17:leaf=0.189441159,cover=2.39134908\n\t\t\t\t18:leaf=-0.0864443704,cover=1.97683418\n\t\t\t10:leaf=0.308168232,cover=4.01579142\n\t2:[f4<0.121577881] yes=5,no=6,missing=6,gain=1.50684166,cover=15.0263853\n\t\t5:leaf=-0.0646624565,cover=1.01710236\n\t\t6:[f3<0.374168128] yes=11,no=12,missing=12,gain=0.723254204,cover=14.0092831\n\t\t\t11:[f4<0.999078631] yes=19,no=20,missing=20,gain=0.908443511,cover=4.05115986\n\t\t\t\t19:leaf=0.23338291,cover=1.65200007\n\t\t\t\t20:leaf=-0.0154680805,cover=2.39915967\n\t\t\t12:leaf=0.305050045,cover=9.95812321\n",
+   "0:[f0<0.272985965] yes=1,no=2,missing=1,gain=7.24439049,cover=47.4958115\n\t1:[f5<0.390878707] yes=3,no=4,missing=3,gain=7.35033417,cover=34.880024\n\t\t3:[f1<0.698898256] yes=7,no=8,missing=7,gain=7.85525703,cover=27.9028492\n\t\t\t7:[f4<0.803346574] yes=13,no=14,missing=13,gain=7.13981819,cover=25.0828228\n\t\t\t\t13:leaf=-0.2193508,cover=22.9014893\n\t\t\t\t14:leaf=0.269088715,cover=2.1813333\n\t\t\t8:leaf=0.296414405,cover=2.82002735\n\t\t4:[f3<0.218734011] yes=9,no=10,missing=10,gain=1.01926517,cover=6.97717476\n\t\t\t9:leaf=-0.0327150375,cover=1.06248105\n\t\t\t10:leaf=0.255651534,cover=5.91469383\n\t2:[f3<0.085506171] yes=5,no=6,missing=5,gain=0.612075329,cover=12.6157856\n\t\t5:[f4<0.118842177] yes=11,no=12,missing=11,gain=1.35182464,cover=8.00564194\n\t\t\t11:[f1<0.183243513] yes=15,no=16,missing=15,gain=2.55094242,cover=5.3310113\n\t\t\t\t15:leaf=-0.119330265,cover=3.35037231\n\t\t\t\t16:leaf=0.24162887,cover=1.98063922\n\t\t\t12:leaf=0.27537775,cover=2.67463017\n\t\t6:leaf=0.30280146,cover=4.61014366\n",
+   "0:[f2<0.15783304] yes=1,no=2,missing=1,gain=6.59896564,cover=43.5856667\n\t1:[f3<0.214009851] yes=3,no=4,missing=3,gain=5.73452997,cover=31.3746719\n\t\t3:[f0<0.658122122] yes=7,no=8,missing=7,gain=5.17918777,cover=22.7883568\n\t\t\t7:[f1<0.701406956] yes=13,no=14,missing=13,gain=5.25195789,cover=19.767868\n\t\t\t\t13:leaf=-0.224429861,cover=18.122097\n\t\t\t\t14:leaf=0.240424857,cover=1.64577103\n\t\t\t8:[f0<0.753732026] yes=15,no=16,missing=16,gain=0.0490009785,cover=3.02048922\n\t\t\t\t15:leaf=0.0601996146,cover=1.09997177\n\t\t\t\t16:leaf=0.233999714,cover=1.92051744\n\t\t4:[f4<0.188790336] yes=9,no=10,missing=9,gain=0.813886881,cover=8.58631516\n\t\t\t9:[f0<0.908761799] yes=17,no=18,missing=18,gain=1.33791041,cover=5.53523874\n\t\t\t\t17:leaf=0.227973655,cover=1.72738957\n\t\t\t\t18:leaf=-0.0392054766,cover=3.80784917\n\t\t\t10:leaf=0.261398137,cover=3.05107689\n\t2:[f1<1.99673474] yes=5,no=6,missing=6,gain=1.05427885,cover=12.2109957\n\t\t5:leaf=0.31390506,cover=4.74626493\n\t\t6:[f3<0.984801948] yes=11,no=12,missing=12,gain=1.18368185,cover=7.46473122\n\t\t\t11:leaf=0.240826279,cover=2.74092555\n\t\t\t12:[f2<0.75854212] yes=19,no=20,missing=20,gain=2.36042595,cover=4.72380543\n\t\t\t\t19:leaf=-0.129528701,cover=3.15316987\n\t\t\t\t20:leaf=0.236354634,cover=1.57063568\n",
+   "0:[f4<0.124481127] yes=1,no=2,missing=1,gain=5.23471737,cover=39.5432434\n\t1:[f3<0.46662277] yes=3,no=4,missing=3,gain=4.34969425,cover=26.4830055\n\t\t3:[f5<0.273428857] yes=7,no=8,missing=7,gain=5.04735565,cover=21.7640877\n\t\t\t7:[f2<0.647023082] yes=15,no=16,missing=15,gain=3.8270793,cover=15.3254089\n\t\t\t\t15:leaf=-0.248543441,cover=13.0436821\n\t\t\t\t16:leaf=0.128291011,cover=2.28172708\n\t\t\t8:[f5<0.617926002] yes=17,no=18,missing=18,gain=0.823535085,cover=6.43867779\n\t\t\t\t17:leaf=0.0251902286,cover=4.44809961\n\t\t\t\t18:leaf=0.235502809,cover=1.99057806\n\t\t4:[f3<0.784992337] yes=9,no=10,missing=10,gain=0.210728168,cover=4.71891832\n\t\t\t9:[f1<0.895975053] yes=19,no=20,missing=20,gain=0.864082515,cover=2.99645448\n\t\t\t\t19:leaf=0.21930173,cover=1.24849164\n\t\t\t\t20:leaf=-0.0426335186,cover=1.74796283\n\t\t\t10:leaf=0.2723279,cover=1.72246385\n\t2:[f5<1.98349404] yes=5,no=6,missing=6,gain=1.06760216,cover=13.0602388\n\t\t5:[f4<0.430327624] yes=11,no=12,missing=12,gain=0.262119293,cover=4.53027391\n\t\t\t11:leaf=0.0969573334,cover=1.55435586\n\t\t\t12:leaf=0.346244663,cover=2.97591805\n\t\t6:[f0<0.133847818] yes=13,no=14,missing=13,gain=1.3499701,cover=8.5299654\n\t\t\t13:[f2<0.150451466] yes=21,no=22,missing=21,gain=2.05647016,cover=6.21078634\n\t\t\t\t21:leaf=-0.0893765911,cover=4.53907585\n\t\t\t\t22:leaf=0.231295064,cover=1.67171037\n\t\t\t14:leaf=0.257110804,cover=2.31917882\n",
+   "0:[f1<0.23954758] yes=1,no=2,missing=1,gain=3.69183683,cover=36.5388756\n\t1:[f2<0.328581274] yes=3,no=4,missing=3,gain=3.6205585,cover=28.0888557\n\t\t3:[f4<0.456555486] yes=7,no=8,missing=7,gain=3.6492486,cover=21.4953537\n\t\t\t7:[f0<0.607133985] yes=13,no=14,missing=13,gain=3.54544902,cover=16.0891533\n\t\t\t\t13:leaf=-0.198485628,cover=13.9525099\n\t\t\t\t14:leaf=0.162902653,cover=2.13664365\n\t\t\t8:[f5<1.98349404] yes=15,no=16,missing=16,gain=1.69149852,cover=5.40619993\n\t\t\t\t15:leaf=0.304968297,cover=1.69134343\n\t\t\t\t16:leaf=-0.00582839549,cover=3.71485662\n\t\t4:[f3<0.984801948] yes=9,no=10,missing=10,gain=0.163897753,cover=6.59350157\n\t\t\t9:leaf=0.241125196,cover=1.88746715\n\t\t\t10:[f2<0.75854212] yes=17,no=18,missing=18,gain=0.518679798,cover=4.70603466\n\t\t\t\t17:leaf=0.0173188895,cover=3.35599899\n\t\t\t\t18:leaf=0.207020715,cover=1.35003555\n\t2:[f1<0.698898256] yes=5,no=6,missing=6,gain=0.280083179,cover=8.45002079\n\t\t5:[f0<0.0192900449] yes=11,no=12,missing=11,gain=0.747412145,cover=5.00130987\n\t\t\t11:[f4<0.139096126] yes=19,no=20,missing=19,gain=1.56304717,cover=3.1799264\n\t\t\t\t19:leaf=-0.12358129,cover=2.12247157\n\t\t\t\t20:leaf=0.213361084,cover=1.05745494\n\t\t\t12:leaf=0.22915481,cover=1.82138348\n\t\t6:leaf=0.272680283,cover=3.44871116\n",
+   "0:[f3<0.214009851] yes=1,no=2,missing=1,gain=3.58563828,cover=33.6423378\n\t1:[f1<0.0612338409] yes=3,no=4,missing=3,gain=3.25304365,cover=24.2059727\n\t\t3:[f5<0.153898373] yes=7,no=8,missing=7,gain=3.9258275,cover=15.8584757\n\t\t\t7:[f2<0.709108412] yes=11,no=12,missing=11,gain=1.65729427,cover=9.69500542\n\t\t\t\t11:leaf=-0.251798809,cover=8.50781441\n\t\t\t\t12:leaf=0.0742042288,cover=1.18719041\n\t\t\t8:[f4<0.442461282] yes=13,no=14,missing=13,gain=1.49905097,cover=6.16347027\n\t\t\t\t13:leaf=-0.0157987531,cover=4.64593077\n\t\t\t\t14:leaf=0.268576533,cover=1.51753938\n\t\t4:[f2<0.165232673] yes=9,no=10,missing=9,gain=1.04445744,cover=8.34749699\n\t\t\t9:[f1<0.698898256] yes=15,no=16,missing=16,gain=1.09800506,cover=5.88325739\n\t\t\t\t15:leaf=-0.0400903411,cover=4.5048008\n\t\t\t\t16:leaf=0.205463678,cover=1.37845683\n\t\t\t10:leaf=0.255137563,cover=2.4642396\n\t2:[f5<0.260574877] yes=5,no=6,missing=6,gain=0.418269634,cover=9.43636608\n\t\t5:leaf=0.0262162965,cover=1.53436685\n\t\t6:leaf=0.215436757,cover=7.901999\n",
+   "0:[f0<0.272985965] yes=1,no=2,missing=1,gain=3.28445292,cover=31.279953\n\t1:[f5<0.390878707] yes=3,no=4,missing=3,gain=2.83943295,cover=23.2479858\n\t\t3:[f3<0.562719047] yes=7,no=8,missing=7,gain=3.22773981,cover=18.2985077\n\t\t\t7:[f4<0.803219795] yes=11,no=12,missing=11,gain=3.09085655,cover=15.3992767\n\t\t\t\t11:leaf=-0.172470689,cover=14.1083164\n\t\t\t\t12:leaf=0.211919472,cover=1.29095984\n\t\t\t8:leaf=0.177095592,cover=2.89923048\n\t\t4:[f5<0.617926002] yes=9,no=10,missing=10,gain=0.402854681,cover=4.94947863\n\t\t\t9:[f5<0.49881801] yes=13,no=14,missing=14,gain=0.856404841,cover=2.7571404\n\t\t\t\t13:leaf=0.191918373,cover=1.04652667\n\t\t\t\t14:leaf=-0.0690860972,cover=1.71061361\n\t\t\t10:leaf=0.239649862,cover=2.19233823\n\t2:[f1<0.161696807] yes=5,no=6,missing=6,gain=0.126847267,cover=8.03196621\n\t\t5:leaf=0.0425225236,cover=1.0656203\n\t\t6:leaf=0.208424374,cover=6.96634626\n",
+   "0:[f4<0.124481127] yes=1,no=2,missing=1,gain=2.71650553,cover=28.9643707\n\t1:[f1<0.0656292662] yes=3,no=4,missing=3,gain=2.1242733,cover=19.3872814\n\t\t3:[f5<0.367344201] yes=7,no=8,missing=7,gain=1.70130765,cover=12.5959349\n\t\t\t7:[f3<0.18577449] yes=13,no=14,missing=13,gain=1.55719256,cover=9.44497299\n\t\t\t\t13:leaf=-0.2432926,cover=5.67400408\n\t\t\t\t14:leaf=-0.00167393894,cover=3.77096915\n\t\t\t8:[f5<0.497602999] yes=15,no=16,missing=16,gain=0.397233337,cover=3.1509614\n\t\t\t\t15:leaf=0.170931354,cover=1.05833066\n\t\t\t\t16:leaf=-0.0102062654,cover=2.09263062\n\t\t4:[f1<0.698898256] yes=9,no=10,missing=10,gain=0.576891661,cover=6.79134703\n\t\t\t9:[f2<0.165232673] yes=17,no=18,missing=17,gain=0.806075096,cover=5.07945919\n\t\t\t\t17:leaf=-0.0370602831,cover=4.00000572\n\t\t\t\t18:leaf=0.186653003,cover=1.07945335\n\t\t\t10:leaf=0.213485256,cover=1.71188796\n\t2:[f3<1.99632776] yes=5,no=6,missing=6,gain=0.216571331,cover=9.57708836\n\t\t5:leaf=0.238020197,cover=2.66364956\n\t\t6:[f2<0.130388886] yes=11,no=12,missing=11,gain=0.518043041,cover=6.91343927\n\t\t\t11:[f5<1.98349404] yes=19,no=20,missing=20,gain=0.995082438,cover=5.22239256\n\t\t\t\t19:leaf=0.177289367,cover=1.79908943\n\t\t\t\t20:leaf=-0.0532006435,cover=3.42330337\n\t\t\t12:leaf=0.215591997,cover=1.6910466\n",
+   "0:[f0<0.272985965] yes=1,no=2,missing=1,gain=2.04135919,cover=27.0530434\n\t1:[f2<0.17588298] yes=3,no=4,missing=3,gain=2.273417,cover=20.1804943\n\t\t3:[f5<0.638294101] yes=7,no=8,missing=7,gain=2.01125765,cover=14.6524992\n\t\t\t7:[f1<0.701406956] yes=13,no=14,missing=13,gain=2.09634256,cover=13.3476686\n\t\t\t\t13:leaf=-0.148661882,cover=12.2345333\n\t\t\t\t14:leaf=0.182659641,cover=1.1131357\n\t\t\t8:leaf=0.195749417,cover=1.30483067\n\t\t4:[f4<0.996667147] yes=9,no=10,missing=10,gain=0.136149645,cover=5.52799463\n\t\t\t9:leaf=0.205232874,cover=1.61055708\n\t\t\t10:[f2<0.482935965] yes=15,no=16,missing=16,gain=0.243471354,cover=3.91743755\n\t\t\t\t15:leaf=-0.0207790881,cover=1.33168411\n\t\t\t\t16:leaf=0.116405301,cover=2.58575368\n\t2:[f0<0.735190094] yes=5,no=6,missing=6,gain=0.136490345,cover=6.87254906\n\t\t5:[f4<0.118842177] yes=11,no=12,missing=11,gain=0.418967426,cover=4.64406824\n\t\t\t11:[f1<0.161696807] yes=17,no=18,missing=17,gain=0.80835098,cover=3.43579435\n\t\t\t\t17:leaf=-0.0689070448,cover=2.37847805\n\t\t\t\t18:leaf=0.170568824,cover=1.05731642\n\t\t\t12:leaf=0.203879684,cover=1.20827377\n\t\t6:leaf=0.236047342,cover=2.22848082\n",
+   "0:[f4<0.124481127] yes=1,no=2,missing=1,gain=1.80937409,cover=25.09832\n\t1:[f5<0.617926002] yes=3,no=4,missing=3,gain=1.50634825,cover=16.9828854\n\t\t3:[f2<0.135911524] yes=7,no=8,missing=7,gain=1.7121079,cover=15.4473801\n\t\t\t7:[f1<0.555052817] yes=9,no=10,missing=9,gain=1.90705216,cover=10.494895\n\t\t\t\t9:leaf=-0.166623771,cover=8.79052448\n\t\t\t\t10:leaf=0.127378687,cover=1.70437002\n\t\t\t8:[f3<0.984801948] yes=11,no=12,missing=12,gain=0.341694176,cover=4.95248508\n\t\t\t\t11:leaf=0.164050937,cover=1.80580664\n\t\t\t\t12:leaf=0.0147167621,cover=3.14667869\n\t\t4:leaf=0.202046454,cover=1.53550458\n\t2:[f1<0.23954758] yes=5,no=6,missing=6,gain=0.23551774,cover=8.11543655\n\t\t5:leaf=0.0200699959,cover=1.37592912\n\t\t6:leaf=0.17154859,cover=6.7395072\n",
+   "0:[f0<0.272985965] yes=1,no=2,missing=1,gain=1.60826218,cover=23.6188107\n\t1:[f3<0.261998504] yes=3,no=4,missing=3,gain=1.74956167,cover=17.6819973\n\t\t3:[f2<0.75854212] yes=7,no=8,missing=7,gain=1.59306908,cover=12.6679745\n\t\t\t7:[f5<0.62543565] yes=13,no=14,missing=13,gain=1.81337583,cover=11.6084623\n\t\t\t\t13:leaf=-0.143741086,cover=10.5381813\n\t\t\t\t14:leaf=0.17032662,cover=1.07028174\n\t\t\t8:leaf=0.185211271,cover=1.0595113\n\t\t4:[f5<0.367344201] yes=9,no=10,missing=10,gain=0.267186761,cover=5.01402378\n\t\t\t9:leaf=-0.00665353611,cover=1.02544415\n\t\t\t10:leaf=0.155301839,cover=3.98857951\n\t2:[f5<0.989580333] yes=5,no=6,missing=6,gain=0.0550332069,cover=5.93681288\n\t\t5:leaf=0.223126516,cover=1.70300257\n\t\t6:[f1<0.120001704] yes=11,no=12,missing=11,gain=0.351952434,cover=4.23381042\n\t\t\t11:[f0<0.606410861] yes=15,no=16,missing=16,gain=0.210150272,cover=2.57757759\n\t\t\t\t15:leaf=-0.0519886836,cover=1.35105252\n\t\t\t\t16:leaf=0.0771241859,cover=1.22652519\n\t\t\t12:leaf=0.17546007,cover=1.6562326\n"
+  ],
+  "dump_json": [
+   "  { \"nodeid\": 0, \"depth\": 0, \"split\": \"f0\", \"split_condition\": 0.397783726, \"yes\": 1, \"no\": 2, \"missing\": 1 , \"gain\": 40.5822144, \"cover\": 69.1200027, \"children\": [\n    { \"nodeid\": 1, \"depth\": 1, \"split\": \"f4\", \"split_condition\": 0.124481127, \"yes\": 3, \"no\": 4, \"missing\": 3 , \"gain\": 40.4976883, \"cover\": 52.3008041, \"children\": [\n      { \"nodeid\": 3, \"depth\": 2, \"split\": \"f1\", \"split_condition\": 0.558127403, \"yes\": 5, \"no\": 6, \"missing\": 5 , \"gain\": 33.0352325, \"cover\": 33.638401, \"children\": [\n        { \"nodeid\": 5, \"depth\": 3, \"split\": \"f5\", \"split_condition\": 0.638294101, \"yes\": 9, \"no\": 10, \"missing\": 9 , \"gain\": 38.0384979, \"cover\": 28.1088009, \"children\": [\n          { \"nodeid\": 9, \"leaf\": -0.588142753 , \"cover\": 24.4224014 }, \n          { \"nodeid\": 10, \"leaf\": 0.368726552 , \"cover\": 3.68640018 }\n        ]}, \n        { \"nodeid\": 6, \"depth\": 3, \"split\": \"f1\", \"split_condition\": 0.698898256, \"yes\": 11, \"no\": 12, \"missing\": 12 , \"gain\": 1.96640968, \"cover\": 5.52960014, \"children\": [\n          { \"nodeid\": 11, \"leaf\": -0.0278810319 , \"cover\": 1.15200007 }, \n          { \"nodeid\": 12, \"leaf\": 0.381582886 , \"cover\": 4.37760019 }\n        ]}\n      ]}, \n      { \"nodeid\": 4, \"depth\": 2, \"split\": \"f3\", \"split_condition\": 1.99632776, \"yes\": 7, \"no\": 8, \"missing\": 8 , \"gain\": 7.52785587, \"cover\": 18.6624012, \"children\": [\n        { \"nodeid\": 7, \"leaf\": 0.417034447 , \"cover\": 8.06400013 }, \n        { \"nodeid\": 8, \"depth\": 3, \"split\": \"f2\", \"split_condition\": 0.17588298, \"yes\": 13, \"no\": 14, \"missing\": 13 , \"gain\": 12.3511124, \"cover\": 10.5984001, \"children\": [\n          { \"nodeid\": 13, \"leaf\": -0.219366267 , \"cover\": 6.2208004 }, \n          { \"nodeid\": 14, \"leaf\": 0.381582886 , \"cover\": 4.37760019 }\n        ]}\n      ]}\n    ]}, \n    { \"nodeid\": 2, \"leaf\": 0.391936809 , \"cover\": 16.8192005 }\n  ]}",
+   "  { \"nodeid\": 0, \"depth\": 0, \"split\": \"f3\", \"split_condition\": 0.085506171, \"yes\": 1, \"no\": 2, \"missing\": 1 , \"gain\": 24.2973461, \"cover\": 66.5186996, \"children\": [\n    { \"nodeid\": 1, \"depth\": 1, \"split\": \"f0\", \"split_condition\": 0.397783726, \"yes\": 3, \"no\": 4, \"missing\": 3 , \"gain\": 21.1185493, \"cover\": 42.6710358, \"children\": [\n      { \"nodeid\": 3, \"depth\": 2, \"split\": \"f2\", \"split_condition\": 0.339292765, \"yes\": 7, \"no\": 8, \"missing\": 7 , \"gain\": 20.2666931, \"cover\": 34.089817, \"children\": [\n        { \"nodeid\": 7, \"depth\": 3, \"split\": \"f1\", \"split_condition\": 0.506379604, \"yes\": 13, \"no\": 14, \"missing\": 13 , \"gain\": 18.4119644, \"cover\": 26.0268211, \"children\": [\n          { \"nodeid\": 13, \"leaf\": -0.45304957 , \"cover\": 22.36973 }, \n          { \"nodeid\": 14, \"leaf\": 0.223493218 , \"cover\": 3.6570909 }\n        ]}, \n        { \"nodeid\": 8, \"depth\": 3, \"split\": \"f4\", \"split_condition\": 0.984687328, \"yes\": 15, \"no\": 16, \"missing\": 16 , \"gain\": 2.78015685, \"cover\": 8.06299496, \"children\": [\n          { \"nodeid\": 15, \"leaf\": 0.328660309 , \"cover\": 3.80610752 }, \n          { \"nodeid\": 16, \"leaf\": -0.00346297934 , \"cover\": 4.25688791 }\n        ]}\n      ]}, \n      { \"nodeid\": 4, \"depth\": 2, \"split\": \"f0\", \"split_condition\": 0.606410861, \"yes\": 9, \"no\": 10, \"missing\": 10 , \"gain\": 0.435609818, \"cover\": 8.58122063, \"children\": [\n        { \"nodeid\": 9, \"leaf\": 0.0966707245 , \"cover\": 2.19519591 }, \n        { \"nodeid\": 10, \"leaf\": 0.317358851 , \"cover\": 6.38602448 }\n      ]}\n    ]}, \n    { \"nodeid\": 2, \"depth\": 1, \"split\": \"f2\", \"split_condition\": 0.969848096, \"yes\": 5, \"no\": 6, \"missing\": 6 , \"gain\": 3.60751724, \"cover\": 23.847662, \"children\": [\n      { \"nodeid\": 5, \"leaf\": 0.390155792 , \"cover\": 9.26215363 }, \n      { \"nodeid\": 6, \"depth\": 2, \"split\": \"f4\", \"split_condition\": 0.171915606, \"yes\": 11, \"no\": 12, \"missing\": 11 , \"gain\": 4.34504557, \"cover\": 14.5855083, \"children\": [\n        { \"nodeid\": 11, \"depth\": 3, \"split\": \"f0\", \"split_condition\": 0.0746014789, \"yes\": 17, \"no\": 18, \"missing\": 17 , \"gain\": 7.08389711, \"cover\": 9.63939857, \"children\": [\n          { \"nodeid\": 17, \"leaf\": -0.186003551 , \"cover\": 5.7390008 }, \n          { \"nodeid\": 18, \"leaf\": 0.288105428 , \"cover\": 3.90039802 }\n        ]}, \n        { \"nodeid\": 12, \"leaf\": 0.342619658 , \"cover\": 4.94610929 }\n      ]}\n    ]}\n  ]}",
+   "  { \"nodeid\": 0, \"depth\": 0, \"split\": \"f2\", \"split_condition\": 0.482935965, \"yes\": 1, \"no\": 2, \"missing\": 1 , \"gain\": 15.5064411, \"cover\": 61.4896584, \"children\": [\n    { \"nodeid\": 1, \"depth\": 1, \"split\": \"f0\", \"split_condition\": 0.272985965, \"yes\": 3, \"no\": 4, \"missing\": 3 , \"gain\": 16.6226749, \"cover\": 49.634552, \"children\": [\n      { \"nodeid\": 3, \"depth\": 2, \"split\": \"f3\", \"split_condition\": 0.565474093, \"yes\": 7, \"no\": 8, \"missing\": 7 , \"gain\": 15.8771601, \"cover\": 36.2302856, \"children\": [\n        { \"nodeid\": 7, \"depth\": 3, \"split\": \"f5\", \"split_condition\": 0.669677854, \"yes\": 11, \"no\": 12, \"missing\": 11 , \"gain\": 17.1020298, \"cover\": 31.0538521, \"children\": [\n          { \"nodeid\": 11, \"leaf\": -0.314686358 , \"cover\": 28.1656284 }, \n          { \"nodeid\": 12, \"leaf\": 0.367335618 , \"cover\": 2.88822222 }\n        ]}, \n        { \"nodeid\": 8, \"leaf\": 0.288104355 , \"cover\": 5.17643547 }\n      ]}, \n      { \"nodeid\": 4, \"depth\": 2, \"split\": \"f0\", \"split_condition\": 0.606410861, \"yes\": 9, \"no\": 10, \"missing\": 10 , \"gain\": 1.73568392, \"cover\": 13.4042635, \"children\": [\n        { \"nodeid\": 9, \"depth\": 3, \"split\": \"f1\", \"split_condition\": 0.161696807, \"yes\": 13, \"no\": 14, \"missing\": 13 , \"gain\": 2.12707067, \"cover\": 5.63024139, \"children\": [\n          { \"nodeid\": 13, \"leaf\": -0.0614255518 , \"cover\": 3.72998643 }, \n          { \"nodeid\": 14, \"leaf\": 0.268895745 , \"cover\": 1.90025496 }\n        ]}, \n        { \"nodeid\": 10, \"leaf\": 0.304669529 , \"cover\": 7.77402258 }\n      ]}\n    ]}, \n    { \"nodeid\": 2, \"depth\": 1, \"split\": \"f2\", \"split_condition\": 0.588319957, \"yes\": 5, \"no\": 6, \"missing\": 6 , \"gain\": 0.431920052, \"cover\": 11.8551083, \"children\": [\n      { \"nodeid\": 5, \"leaf\": 0.103396855 , \"cover\": 1.9198637 }, \n      { \"nodeid\": 6, \"leaf\": 0.34098798 , \"cover\": 9.93524456 }\n    ]}\n  ]}",
+   "  { \"nodeid\": 0, \"depth\": 0, \"split\": \"f4\", \"split_condition\": 0.124481127, \"yes\": 1, \"no\": 2, \"missing\": 1 , \"gain\": 15.0512047, \"cover\": 56.5709, \"children\": [\n    { \"nodeid\": 1, \"depth\": 1, \"split\": \"f1\", \"split_condition\": 0.0656292662, \"yes\": 3, \"no\": 4, \"missing\": 3 , \"gain\": 12.7138138, \"cover\": 37.603756, \"children\": [\n      { \"nodeid\": 3, \"depth\": 2, \"split\": \"f2\", \"split_condition\": 0.604047954, \"yes\": 7, \"no\": 8, \"missing\": 7 , \"gain\": 7.42449856, \"cover\": 23.1361046, \"children\": [\n        { \"nodeid\": 7, \"depth\": 3, \"split\": \"f5\", \"split_condition\": 0.617926002, \"yes\": 13, \"no\": 14, \"missing\": 13 , \"gain\": 7.89364243, \"cover\": 20.2784576, \"children\": [\n          { \"nodeid\": 13, \"leaf\": -0.338671714 , \"cover\": 18.6672802 }, \n          { \"nodeid\": 14, \"leaf\": 0.24558264 , \"cover\": 1.61117661 }\n        ]}, \n        { \"nodeid\": 8, \"depth\": 3, \"split\": \"f2\", \"split_condition\": 0.75854212, \"yes\": 15, \"no\": 16, \"missing\": 16 , \"gain\": 0.383889437, \"cover\": 2.85764718, \"children\": [\n          { \"nodeid\": 15, \"leaf\": 0.0376506671 , \"cover\": 1.50576079 }, \n          { \"nodeid\": 16, \"leaf\": 0.263167679 , \"cover\": 1.35188639 }\n        ]}\n      ]}, \n      { \"nodeid\": 4, \"depth\": 2, \"split\": \"f5\", \"split_condition\": 0.144829243, \"yes\": 9, \"no\": 10, \"missing\": 9 , \"gain\": 4.07554245, \"cover\": 14.4676523, \"children\": [\n        { \"nodeid\": 9, \"depth\": 3, \"split\": \"f0\", \"split_condition\": 0.0746014789, \"yes\": 17, \"no\": 18, \"missing\": 17 , \"gain\": 5.68888426, \"cover\": 9.11161423, \"children\": [\n          { \"nodeid\": 17, \"leaf\": -0.202613458 , \"cover\": 4.85336399 }, \n          { \"nodeid\": 18, \"leaf\": 0.227319121 , \"cover\": 4.25825071 }\n        ]}, \n        { \"nodeid\": 10, \"leaf\": 0.314017892 , \"cover\": 5.35603762 }\n      ]}\n    ]}, \n    { \"nodeid\": 2, \"depth\": 1, \"split\": \"f2\", \"split_condition\": 0.128973112, \"yes\": 5, \"no\": 6, \"missing\": 6 , \"gain\": 1.72778416, \"cover\": 18.9671402, \"children\": [\n      { \"nodeid\": 5, \"leaf\": -0.0585606396 , \"cover\": 1.31752646 }, \n      { \"nodeid\": 6, \"depth\": 2, \"split\": \"f1\", \"split_condition\": 0.102301821, \"yes\": 11, \"no\": 12, \"missing\": 12 , \"gain\": 0.924800873, \"cover\": 17.6496143, \"children\": [\n        { \"nodeid\": 11, \"leaf\": -0.00479544187 , \"cover\": 1.08775771 }, \n        { \"nodeid\": 12, \"depth\": 3, \"split\": \"f4\", \"split_condition\": 0.456555486, \"yes\": 19, \"no\": 20, \"missing\": 20 , \"gain\": 0.395936012, \"cover\": 16.5618572, \"children\": [\n          { \"nodeid\": 19, \"leaf\": 0.156324923 , \"cover\": 5.42016792 }, \n          { \"nodeid\": 20, \"leaf\": 0.316443443 , \"cover\": 11.1416893 }\n        ]}\n      ]}\n    ]}\n  ]}",
+   "  { \"nodeid\": 0, \"depth\": 0, \"split\": \"f3\", \"split_condition\": 0.214009851, \"yes\": 1, \"no\": 2, \"missing\": 1 , \"gain\": 11.2850857, \"cover\": 51.7377205, \"children\": [\n    { \"nodeid\": 1, \"depth\": 1, \"split\": \"f5\", \"split_condition\": 0.367344201, \"yes\": 3, \"no\": 4, \"missing\": 3 , \"gain\": 9.90667248, \"cover\": 36.711338, \"children\": [\n      { \"nodeid\": 3, \"depth\": 2, \"split\": \"f4\", \"split_condition\": 0.575537264, \"yes\": 7, \"no\": 8, \"missing\": 7 , \"gain\": 8.1729126, \"cover\": 28.3273621, \"children\": [\n        { \"nodeid\": 7, \"depth\": 3, \"split\": \"f2\", \"split_condition\": 0.709108412, \"yes\": 13, \"no\": 14, \"missing\": 13 , \"gain\": 7.78237152, \"cover\": 22.7811375, \"children\": [\n          { \"nodeid\": 13, \"leaf\": -0.288301915 , \"cover\": 20.3023281 }, \n          { \"nodeid\": 14, \"leaf\": 0.212474704 , \"cover\": 2.47881031 }\n        ]}, \n        { \"nodeid\": 8, \"depth\": 3, \"split\": \"f4\", \"split_condition\": 0.803219795, \"yes\": 15, \"no\": 16, \"missing\": 16 , \"gain\": 1.23934472, \"cover\": 5.54622507, \"children\": [\n          { \"nodeid\": 15, \"leaf\": 0.0261413418 , \"cover\": 3.47476149 }, \n          { \"nodeid\": 16, \"leaf\": 0.296258122 , \"cover\": 2.07146382 }\n        ]}\n      ]}, \n      { \"nodeid\": 4, \"depth\": 2, \"split\": \"f5\", \"split_condition\": 0.617926002, \"yes\": 9, \"no\": 10, \"missing\": 10 , \"gain\": 1.18534374, \"cover\": 8.38397408, \"children\": [\n        { \"nodeid\": 9, \"depth\": 3, \"split\": \"f5\", \"split_condition\": 0.489076376, \"yes\": 17, \"no\": 18, \"missing\": 18 , \"gain\": 1.29247618, \"cover\": 4.36818314, \"children\": [\n          { \"nodeid\": 17, \"leaf\": 0.189441159 , \"cover\": 2.39134908 }, \n          { \"nodeid\": 18, \"leaf\": -0.0864443704 , \"cover\": 1.97683418 }\n        ]}, \n        { \"nodeid\": 10, \"leaf\": 0.308168232 , \"cover\": 4.01579142 }\n      ]}\n    ]}, \n    { \"nodeid\": 2, \"depth\": 1, \"split\": \"f4\", \"split_condition\": 0.121577881, \"yes\": 5, \"no\": 6, \"missing\": 6 , \"gain\": 1.50684166, \"cover\": 15.0263853, \"children\": [\n      { \"nodeid\": 5, \"leaf\": -0.0646624565 , \"cover\": 1.01710236 }, \n      { \"nodeid\": 6, \"depth\": 2, \"split\": \"f3\", \"split_condition\": 0.374168128, \"yes\": 11, \"no\": 12, \"missing\": 12 , \"gain\": 0.723254204, \"cover\": 14.0092831, \"children\": [\n        { \"nodeid\": 11, \"depth\": 3, \"split\": \"f4\", \"split_condition\": 0.999078631, \"yes\": 19, \"no\": 20, \"missing\": 20 , \"gain\": 0.908443511, \"cover\": 4.05115986, \"children\": [\n          { \"nodeid\": 19, \"leaf\": 0.23338291 , \"cover\": 1.65200007 }, \n          { \"nodeid\": 20, \"leaf\": -0.0154680805 , \"cover\": 2.39915967 }\n        ]}, \n        { \"nodeid\": 12, \"leaf\": 0.305050045 , \"cover\": 9.95812321 }\n      ]}\n    ]}\n  ]}",
+   "  { \"nodeid\": 0, \"depth\": 0, \"split\": \"f0\", \"split_condition\": 0.272985965, \"yes\": 1, \"no\": 2, \"missing\": 1 , \"gain\": 7.24439049, \"cover\": 47.4958115, \"children\": [\n    { \"nodeid\": 1, \"depth\": 1, \"split\": \"f5\", \"split_condition\": 0.390878707, \"yes\": 3, \"no\": 4, \"missing\": 3 , \"gain\": 7.35033417, \"cover\": 34.880024, \"children\": [\n      { \"nodeid\": 3, \"depth\": 2, \"split\": \"f1\", \"split_condition\": 0.698898256, \"yes\": 7, \"no\": 8, \"missing\": 7 , \"gain\": 7.85525703, \"cover\": 27.9028492, \"children\": [\n        { \"nodeid\": 7, \"depth\": 3, \"split\": \"f4\", \"split_condition\": 0.803346574, \"yes\": 13, \"no\": 14, \"missing\": 13 , \"gain\": 7.13981819, \"cover\": 25.0828228, \"children\": [\n          { \"nodeid\": 13, \"leaf\": -0.2193508 , \"cover\": 22.9014893 }, \n          { \"nodeid\": 14, \"leaf\": 0.269088715 , \"cover\": 2.1813333 }\n        ]}, \n        { \"nodeid\": 8, \"leaf\": 0.296414405 , \"cover\": 2.82002735 }\n      ]}, \n      { \"nodeid\": 4, \"depth\": 2, \"split\": \"f3\", \"split_condition\": 0.218734011, \"yes\": 9, \"no\": 10, \"missing\": 10 , \"gain\": 1.01926517, \"cover\": 6.97717476, \"children\": [\n        { \"nodeid\": 9, \"leaf\": -0.0327150375 , \"cover\": 1.06248105 }, \n        { \"nodeid\": 10, \"leaf\": 0.255651534 , \"cover\": 5.91469383 }\n      ]}\n    ]}, \n    { \"nodeid\": 2, \"depth\": 1, \"split\": \"f3\", \"split_condition\": 0.085506171, \"yes\": 5, \"no\": 6, \"missing\": 5 , \"gain\": 0.612075329, \"cover\": 12.6157856, \"children\": [\n      { \"nodeid\": 5, \"depth\": 2, \"split\": \"f4\", \"split_condition\": 0.118842177, \"yes\": 11, \"no\": 12, \"missing\": 11 , \"gain\": 1.35182464, \"cover\": 8.00564194, \"children\": [\n        { \"nodeid\": 11, \"depth\": 3, \"split\": \"f1\", \"split_condition\": 0.183243513, \"yes\": 15, \"no\": 16, \"missing\": 15 , \"gain\": 2.55094242, \"cover\": 5.3310113, \"children\": [\n          { \"nodeid\": 15, \"leaf\": -0.119330265 , \"cover\": 3.35037231 }, \n          { \"nodeid\": 16, \"leaf\": 0.24162887 , \"cover\": 1.98063922 }\n        ]}, \n        { \"nodeid\": 12, \"leaf\": 0.27537775 , \"cover\": 2.67463017 }\n      ]}, \n      { \"nodeid\": 6, \"leaf\": 0.30280146 , \"cover\": 4.61014366 }\n    ]}\n  ]}",
+   "  { \"nodeid\": 0, \"depth\": 0, \"split\": \"f2\", \"split_condition\": 0.15783304, \"yes\": 1, \"no\": 2, \"missing\": 1 , \"gain\": 6.59896564, \"cover\": 43.5856667, \"children\": [\n    { \"nodeid\": 1, \"depth\": 1, \"split\": \"f3\", \"split_condition\": 0.214009851, \"yes\": 3, \"no\": 4, \"missing\": 3 , \"gain\": 5.73452997, \"cover\": 31.3746719, \"children\": [\n      { \"nodeid\": 3, \"depth\": 2, \"split\": \"f0\", \"split_condition\": 0.658122122, \"yes\": 7, \"no\": 8, \"missing\": 7 , \"gain\": 5.17918777, \"cover\": 22.7883568, \"children\": [\n        { \"nodeid\": 7, \"depth\": 3, \"split\": \"f1\", \"split_condition\": 0.701406956, \"yes\": 13, \"no\": 14, \"missing\": 13 , \"gain\": 5.25195789, \"cover\": 19.767868, \"children\": [\n          { \"nodeid\": 13, \"leaf\": -0.224429861 , \"cover\": 18.122097 }, \n          { \"nodeid\": 14, \"leaf\": 0.240424857 , \"cover\": 1.64577103 }\n        ]}, \n        { \"nodeid\": 8, \"depth\": 3, \"split\": \"f0\", \"split_condition\": 0.753732026, \"yes\": 15, \"no\": 16, \"missing\": 16 , \"gain\": 0.0490009785, \"cover\": 3.02048922, \"children\": [\n          { \"nodeid\": 15, \"leaf\": 0.0601996146 , \"cover\": 1.09997177 }, \n          { \"nodeid\": 16, \"leaf\": 0.233999714 , \"cover\": 1.92051744 }\n        ]}\n      ]}, \n      { \"nodeid\": 4, \"depth\": 2, \"split\": \"f4\", \"split_condition\": 0.188790336, \"yes\": 9, \"no\": 10, \"missing\": 9 , \"gain\": 0.813886881, \"cover\": 8.58631516, \"children\": [\n        { \"nodeid\": 9, \"depth\": 3, \"split\": \"f0\", \"split_condition\": 0.908761799, \"yes\": 17, \"no\": 18, \"missing\": 18 , \"gain\": 1.33791041, \"cover\": 5.53523874, \"children\": [\n          { \"nodeid\": 17, \"leaf\": 0.227973655 , \"cover\": 1.72738957 }, \n          { \"nodeid\": 18, \"leaf\": -0.0392054766 , \"cover\": 3.80784917 }\n        ]}, \n        { \"nodeid\": 10, \"leaf\": 0.261398137 , \"cover\": 3.05107689 }\n      ]}\n    ]}, \n    { \"nodeid\": 2, \"depth\": 1, \"split\": \"f1\", \"split_condition\": 1.99673474, \"yes\": 5, \"no\": 6, \"missing\": 6 , \"gain\": 1.05427885, \"cover\": 12.2109957, \"children\": [\n      { \"nodeid\": 5, \"leaf\": 0.31390506 , \"cover\": 4.74626493 }, \n      { \"nodeid\": 6, \"depth\": 2, \"split\": \"f3\", \"split_condition\": 0.984801948, \"yes\": 11, \"no\": 12, \"missing\": 12 , \"gain\": 1.18368185, \"cover\": 7.46473122, \"children\": [\n        { \"nodeid\": 11, \"leaf\": 0.240826279 , \"cover\": 2.74092555 }, \n        { \"nodeid\": 12, \"depth\": 3, \"split\": \"f2\", \"split_condition\": 0.75854212, \"yes\": 19, \"no\": 20, \"missing\": 20 , \"gain\": 2.36042595, \"cover\": 4.72380543, \"children\": [\n          { \"nodeid\": 19, \"leaf\": -0.129528701 , \"cover\": 3.15316987 }, \n          { \"nodeid\": 20, \"leaf\": 0.236354634 , \"cover\": 1.57063568 }\n        ]}\n      ]}\n    ]}\n  ]}",
+   "  { \"nodeid\": 0, \"depth\": 0, \"split\": \"f4\", \"split_condition\": 0.124481127, \"yes\": 1, \"no\": 2, \"missing\": 1 , \"gain\": 5.23471737, \"cover\": 39.5432434, \"children\": [\n    { \"nodeid\": 1, \"depth\": 1, \"split\": \"f3\", \"split_condition\": 0.46662277, \"yes\": 3, \"no\": 4, \"missing\": 3 , \"gain\": 4.34969425, \"cover\": 26.4830055, \"children\": [\n      { \"nodeid\": 3, \"depth\": 2, \"split\": \"f5\", \"split_condition\": 0.273428857, \"yes\": 7, \"no\": 8, \"missing\": 7 , \"gain\": 5.04735565, \"cover\": 21.7640877, \"children\": [\n        { \"nodeid\": 7, \"depth\": 3, \"split\": \"f2\", \"split_condition\": 0.647023082, \"yes\": 15, \"no\": 16, \"missing\": 15 , \"gain\": 3.8270793, \"cover\": 15.3254089, \"children\": [\n          { \"nodeid\": 15, \"leaf\": -0.248543441 , \"cover\": 13.0436821 }, \n          { \"nodeid\": 16, \"leaf\": 0.128291011 , \"cover\": 2.28172708 }\n        ]}, \n        { \"nodeid\": 8, \"depth\": 3, \"split\": \"f5\", \"split_condition\": 0.617926002, \"yes\": 17, \"no\": 18, \"missing\": 18 , \"gain\": 0.823535085, \"cover\": 6.43867779, \"children\": [\n          { \"nodeid\": 17, \"leaf\": 0.0251902286 , \"cover\": 4.44809961 }, \n          { \"nodeid\": 18, \"leaf\": 0.235502809 , \"cover\": 1.99057806 }\n        ]}\n      ]}, \n      { \"nodeid\": 4, \"depth\": 2, \"split\": \"f3\", \"split_condition\": 0.784992337, \"yes\": 9, \"no\": 10, \"missing\": 10 , \"gain\": 0.210728168, \"cover\": 4.71891832, \"children\": [\n        { \"nodeid\": 9, \"depth\": 3, \"split\": \"f1\", \"split_condition\": 0.895975053, \"yes\": 19, \"no\": 20, \"missing\": 20 , \"gain\": 0.864082515, \"cover\": 2.99645448, \"children\": [\n          { \"nodeid\": 19, \"leaf\": 0.21930173 , \"cover\": 1.24849164 }, \n          { \"nodeid\": 20, \"leaf\": -0.0426335186 , \"cover\": 1.74796283 }\n        ]}, \n        { \"nodeid\": 10, \"leaf\": 0.2723279 , \"cover\": 1.72246385 }\n      ]}\n    ]}, \n    { \"nodeid\": 2, \"depth\": 1, \"split\": \"f5\", \"split_condition\": 1.98349404, \"yes\": 5, \"no\": 6, \"missing\": 6 , \"gain\": 1.06760216, \"cover\": 13.0602388, \"children\": [\n      { \"nodeid\": 5, \"depth\": 2, \"split\": \"f4\", \"split_condition\": 0.430327624, \"yes\": 11, \"no\": 12, \"missing\": 12 , \"gain\": 0.262119293, \"cover\": 4.53027391, \"children\": [\n        { \"nodeid\": 11, \"leaf\": 0.0969573334 , \"cover\": 1.55435586 }, \n        { \"nodeid\": 12, \"leaf\": 0.346244663 , \"cover\": 2.97591805 }\n      ]}, \n      { \"nodeid\": 6, \"depth\": 2, \"split\": \"f0\", \"split_condition\": 0.133847818, \"yes\": 13, \"no\": 14, \"missing\": 13 , \"gain\": 1.3499701, \"cover\": 8.5299654, \"children\": [\n        { \"nodeid\": 13, \"depth\": 3, \"split\": \"f2\", \"split_condition\": 0.150451466, \"yes\": 21, \"no\": 22, \"missing\": 21 , \"gain\": 2.05647016, \"cover\": 6.21078634, \"children\": [\n          { \"nodeid\": 21, \"leaf\": -0.0893765911 , \"cover\": 4.53907585 }, \n          { \"nodeid\": 22, \"leaf\": 0.231295064 , \"cover\": 1.67171037 }\n        ]}, \n        { \"nodeid\": 14, \"leaf\": 0.257110804 , \"cover\": 2.31917882 }\n      ]}\n    ]}\n  ]}",
+   "  { \"nodeid\": 0, \"depth\": 0, \"split\": \"f1\", \"split_condition\": 0.23954758, \"yes\": 1, \"no\": 2, \"missing\": 1 , \"gain\": 3.69183683, \"cover\": 36.5388756, \"children\": [\n    { \"nodeid\": 1, \"depth\": 1, \"split\": \"f2\", \"split_condition\": 0.328581274, \"yes\": 3, \"no\": 4, \"missing\": 3 , \"gain\": 3.6205585, \"cover\": 28.0888557, \"children\": [\n      { \"nodeid\": 3, \"depth\": 2, \"split\": \"f4\", \"split_condition\": 0.456555486, \"yes\": 7, \"no\": 8, \"missing\": 7 , \"gain\": 3.6492486, \"cover\": 21.4953537, \"children\": [\n        { \"nodeid\": 7, \"depth\": 3, \"split\": \"f0\", \"split_condition\": 0.607133985, \"yes\": 13, \"no\": 14, \"missing\": 13 , \"gain\": 3.54544902, \"cover\": 16.0891533, \"children\": [\n          { \"nodeid\": 13, \"leaf\": -0.198485628 , \"cover\": 13.9525099 }, \n          { \"nodeid\": 14, \"leaf\": 0.162902653 , \"cover\": 2.13664365 }\n        ]}, \n        { \"nodeid\": 8, \"depth\": 3, \"split\": \"f5\", \"split_condition\": 1.98349404, \"yes\": 15, \"no\": 16, \"missing\": 16 , \"gain\": 1.69149852, \"cover\": 5.40619993, \"children\": [\n          { \"nodeid\": 15, \"leaf\": 0.304968297 , \"cover\": 1.69134343 }, \n          { \"nodeid\": 16, \"leaf\": -0.00582839549 , \"cover\": 3.71485662 }\n        ]}\n      ]}, \n      { \"nodeid\": 4, \"depth\": 2, \"split\": \"f3\", \"split_condition\": 0.984801948, \"yes\": 9, \"no\": 10, \"missing\": 10 , \"gain\": 0.163897753, \"cover\": 6.59350157, \"children\": [\n        { \"nodeid\": 9, \"leaf\": 0.241125196 , \"cover\": 1.88746715 }, \n        { \"nodeid\": 10, \"depth\": 3, \"split\": \"f2\", \"split_condition\": 0.75854212, \"yes\": 17, \"no\": 18, \"missing\": 18 , \"gain\": 0.518679798, \"cover\": 4.70603466, \"children\": [\n          { \"nodeid\": 17, \"leaf\": 0.0173188895 , \"cover\": 3.35599899 }, \n          { \"nodeid\": 18, \"leaf\": 0.207020715 , \"cover\": 1.35003555 }\n        ]}\n      ]}\n    ]}, \n    { \"nodeid\": 2, \"depth\": 1, \"split\": \"f1\", \"split_condition\": 0.698898256, \"yes\": 5, \"no\": 6, \"missing\": 6 , \"gain\": 0.280083179, \"cover\": 8.45002079, \"children\": [\n      { \"nodeid\": 5, \"depth\": 2, \"split\": \"f0\", \"split_condition\": 0.0192900449, \"yes\": 11, \"no\": 12, \"missing\": 11 , \"gain\": 0.747412145, \"cover\": 5.00130987, \"children\": [\n        { \"nodeid\": 11, \"depth\": 3, \"split\": \"f4\", \"split_condition\": 0.139096126, \"yes\": 19, \"no\": 20, \"missing\": 19 , \"gain\": 1.56304717, \"cover\": 3.1799264, \"children\": [\n          { \"nodeid\": 19, \"leaf\": -0.12358129 , \"cover\": 2.12247157 }, \n          { \"nodeid\": 20, \"leaf\": 0.213361084 , \"cover\": 1.05745494 }\n        ]}, \n        { \"nodeid\": 12, \"leaf\": 0.22915481 , \"cover\": 1.82138348 }\n      ]}, \n      { \"nodeid\": 6, \"leaf\": 0.272680283 , \"cover\": 3.44871116 }\n    ]}\n  ]}",
+   "  { \"nodeid\": 0, \"depth\": 0, \"split\": \"f3\", \"split_condition\": 0.214009851, \"yes\": 1, \"no\": 2, \"missing\": 1 , \"gain\": 3.58563828, \"cover\": 33.6423378, \"children\": [\n    { \"nodeid\": 1, \"depth\": 1, \"split\": \"f1\", \"split_condition\": 0.0612338409, \"yes\": 3, \"no\": 4, \"missing\": 3 , \"gain\": 3.25304365, \"cover\": 24.2059727, \"children\": [\n      { \"nodeid\": 3, \"depth\": 2, \"split\": \"f5\", \"split_condition\": 0.153898373, \"yes\": 7, \"no\": 8, \"missing\": 7 , \"gain\": 3.9258275, \"cover\": 15.8584757, \"children\": [\n        { \"nodeid\": 7, \"depth\": 3, \"split\": \"f2\", \"split_condition\": 0.709108412, \"yes\": 11, \"no\": 12, \"missing\": 11 , \"gain\": 1.65729427, \"cover\": 9.69500542, \"children\": [\n          { \"nodeid\": 11, \"leaf\": -0.251798809 , \"cover\": 8.50781441 }, \n          { \"nodeid\": 12, \"leaf\": 0.0742042288 , \"cover\": 1.18719041 }\n        ]}, \n        { \"nodeid\": 8, \"depth\": 3, \"split\": \"f4\", \"split_condition\": 0.442461282, \"yes\": 13, \"no\": 14, \"missing\": 13 , \"gain\": 1.49905097, \"cover\": 6.16347027, \"children\": [\n          { \"nodeid\": 13, \"leaf\": -0.0157987531 , \"cover\": 4.64593077 }, \n          { \"nodeid\": 14, \"leaf\": 0.268576533 , \"cover\": 1.51753938 }\n        ]}\n      ]}, \n      { \"nodeid\": 4, \"depth\": 2, \"split\": \"f2\", \"split_condition\": 0.165232673, \"yes\": 9, \"no\": 10, \"missing\": 9 , \"gain\": 1.04445744, \"cover\": 8.34749699, \"children\": [\n        { \"nodeid\": 9, \"depth\": 3, \"split\": \"f1\", \"split_condition\": 0.698898256, \"yes\": 15, \"no\": 16, \"missing\": 16 , \"gain\": 1.09800506, \"cover\": 5.88325739, \"children\": [\n          { \"nodeid\": 15, \"leaf\": -0.0400903411 , \"cover\": 4.5048008 }, \n          { \"nodeid\": 16, \"leaf\": 0.205463678 , \"cover\": 1.37845683 }\n        ]}, \n        { \"nodeid\": 10, \"leaf\": 0.255137563 , \"cover\": 2.4642396 }\n      ]}\n    ]}, \n    { \"nodeid\": 2, \"depth\": 1, \"split\": \"f5\", \"split_condition\": 0.260574877, \"yes\": 5, \"no\": 6, \"missing\": 6 , \"gain\": 0.418269634, \"cover\": 9.43636608, \"children\": [\n      { \"nodeid\": 5, \"leaf\": 0.0262162965 , \"cover\": 1.53436685 }, \n      { \"nodeid\": 6, \"leaf\": 0.215436757 , \"cover\": 7.901999 }\n    ]}\n  ]}",
+   "  { \"nodeid\": 0, \"depth\": 0, \"split\": \"f0\", \"split_condition\": 0.272985965, \"yes\": 1, \"no\": 2, \"missing\": 1 , \"gain\": 3.28445292, \"cover\": 31.279953, \"children\": [\n    { \"nodeid\": 1, \"depth\": 1, \"split\": \"f5\", \"split_condition\": 0.390878707, \"yes\": 3, \"no\": 4, \"missing\": 3 , \"gain\": 2.83943295, \"cover\": 23.2479858, \"children\": [\n      { \"nodeid\": 3, \"depth\": 2, \"split\": \"f3\", \"split_condition\": 0.562719047, \"yes\": 7, \"no\": 8, \"missing\": 7 , \"gain\": 3.22773981, \"cover\": 18.2985077, \"children\": [\n        { \"nodeid\": 7, \"depth\": 3, \"split\": \"f4\", \"split_condition\": 0.803219795, \"yes\": 11, \"no\": 12, \"missing\": 11 , \"gain\": 3.09085655, \"cover\": 15.3992767, \"children\": [\n          { \"nodeid\": 11, \"leaf\": -0.172470689 , \"cover\": 14.1083164 }, \n          { \"nodeid\": 12, \"leaf\": 0.211919472 , \"cover\": 1.29095984 }\n        ]}, \n        { \"nodeid\": 8, \"leaf\": 0.177095592 , \"cover\": 2.89923048 }\n      ]}, \n      { \"nodeid\": 4, \"depth\": 2, \"split\": \"f5\", \"split_condition\": 0.617926002, \"yes\": 9, \"no\": 10, \"missing\": 10 , \"gain\": 0.402854681, \"cover\": 4.94947863, \"children\": [\n        { \"nodeid\": 9, \"depth\": 3, \"split\": \"f5\", \"split_condition\": 0.49881801, \"yes\": 13, \"no\": 14, \"missing\": 14 , \"gain\": 0.856404841, \"cover\": 2.7571404, \"children\": [\n          { \"nodeid\": 13, \"leaf\": 0.191918373 , \"cover\": 1.04652667 }, \n          { \"nodeid\": 14, \"leaf\": -0.0690860972 , \"cover\": 1.71061361 }\n        ]}, \n        { \"nodeid\": 10, \"leaf\": 0.239649862 , \"cover\": 2.19233823 }\n      ]}\n    ]}, \n    { \"nodeid\": 2, \"depth\": 1, \"split\": \"f1\", \"split_condition\": 0.161696807, \"yes\": 5, \"no\": 6, \"missing\": 6 , \"gain\": 0.126847267, \"cover\": 8.03196621, \"children\": [\n      { \"nodeid\": 5, \"leaf\": 0.0425225236 , \"cover\": 1.0656203 }, \n      { \"nodeid\": 6, \"leaf\": 0.208424374 , \"cover\": 6.96634626 }\n    ]}\n  ]}",
+   "  { \"nodeid\": 0, \"depth\": 0, \"split\": \"f4\", \"split_condition\": 0.124481127, \"yes\": 1, \"no\": 2, \"missing\": 1 , \"gain\": 2.71650553, \"cover\": 28.9643707, \"children\": [\n    { \"nodeid\": 1, \"depth\": 1, \"split\": \"f1\", \"split_condition\": 0.0656292662, \"yes\": 3, \"no\": 4, \"missing\": 3 , \"gain\": 2.1242733, \"cover\": 19.3872814, \"children\": [\n      { \"nodeid\": 3, \"depth\": 2, \"split\": \"f5\", \"split_condition\": 0.367344201, \"yes\": 7, \"no\": 8, \"missing\": 7 , \"gain\": 1.70130765, \"cover\": 12.5959349, \"children\": [\n        { \"nodeid\": 7, \"depth\": 3, \"split\": \"f3\", \"split_condition\": 0.18577449, \"yes\": 13, \"no\": 14, \"missing\": 13 , \"gain\": 1.55719256, \"cover\": 9.44497299, \"children\": [\n          { \"nodeid\": 13, \"leaf\": -0.2432926 , \"cover\": 5.67400408 }, \n          { \"nodeid\": 14, \"leaf\": -0.00167393894 , \"cover\": 3.77096915 }\n        ]}, \n        { \"nodeid\": 8, \"depth\": 3, \"split\": \"f5\", \"split_condition\": 0.497602999, \"yes\": 15, \"no\": 16, \"missing\": 16 , \"gain\": 0.397233337, \"cover\": 3.1509614, \"children\": [\n          { \"nodeid\": 15, \"leaf\": 0.170931354 , \"cover\": 1.05833066 }, \n          { \"nodeid\": 16, \"leaf\": -0.0102062654 , \"cover\": 2.09263062 }\n        ]}\n      ]}, \n      { \"nodeid\": 4, \"depth\": 2, \"split\": \"f1\", \"split_condition\": 0.698898256, \"yes\": 9, \"no\": 10, \"missing\": 10 , \"gain\": 0.576891661, \"cover\": 6.79134703, \"children\": [\n        { \"nodeid\": 9, \"depth\": 3, \"split\": \"f2\", \"split_condition\": 0.165232673, \"yes\": 17, \"no\": 18, \"missing\": 17 , \"gain\": 0.806075096, \"cover\": 5.07945919, \"children\": [\n          { \"nodeid\": 17, \"leaf\": -0.0370602831 , \"cover\": 4.00000572 }, \n          { \"nodeid\": 18, \"leaf\": 0.186653003 , \"cover\": 1.07945335 }\n        ]}, \n        { \"nodeid\": 10, \"leaf\": 0.213485256 , \"cover\": 1.71188796 }\n      ]}\n    ]}, \n    { \"nodeid\": 2, \"depth\": 1, \"split\": \"f3\", \"split_condition\": 1.99632776, \"yes\": 5, \"no\": 6, \"missing\": 6 , \"gain\": 0.216571331, \"cover\": 9.57708836, \"children\": [\n      { \"nodeid\": 5, \"leaf\": 0.238020197 , \"cover\": 2.66364956 }, \n      { \"nodeid\": 6, \"depth\": 2, \"split\": \"f2\", \"split_condition\": 0.130388886, \"yes\": 11, \"no\": 12, \"missing\": 11 , \"gain\": 0.518043041, \"cover\": 6.91343927, \"children\": [\n        { \"nodeid\": 11, \"depth\": 3, \"split\": \"f5\", \"split_condition\": 1.98349404, \"yes\": 19, \"no\": 20, \"missing\": 20 , \"gain\": 0.995082438, \"cover\": 5.22239256, \"children\": [\n          { \"nodeid\": 19, \"leaf\": 0.177289367 , \"cover\": 1.79908943 }, \n          { \"nodeid\": 20, \"leaf\": -0.0532006435 , \"cover\": 3.42330337 }\n        ]}, \n        { \"nodeid\": 12, \"leaf\": 0.215591997 , \"cover\": 1.6910466 }\n      ]}\n    ]}\n  ]}",
+   "  { \"nodeid\": 0, \"depth\": 0, \"split\": \"f0\", \"split_condition\": 0.272985965, \"yes\": 1, \"no\": 2, \"missing\": 1 , \"gain\": 2.04135919, \"cover\": 27.0530434, \"children\": [\n    { \"nodeid\": 1, \"depth\": 1, \"split\": \"f2\", \"split_condition\": 0.17588298, \"yes\": 3, \"no\": 4, \"missing\": 3 , \"gain\": 2.273417, \"cover\": 20.1804943, \"children\": [\n      { \"nodeid\": 3, \"depth\": 2, \"split\": \"f5\", \"split_condition\": 0.638294101, \"yes\": 7, \"no\": 8, \"missing\": 7 , \"gain\": 2.01125765, \"cover\": 14.6524992, \"children\": [\n        { \"nodeid\": 7, \"depth\": 3, \"split\": \"f1\", \"split_condition\": 0.701406956, \"yes\": 13, \"no\": 14, \"missing\": 13 , \"gain\": 2.09634256, \"cover\": 13.3476686, \"children\": [\n          { \"nodeid\": 13, \"leaf\": -0.148661882 , \"cover\": 12.2345333 }, \n          { \"nodeid\": 14, \"leaf\": 0.182659641 , \"cover\": 1.1131357 }\n        ]}, \n        { \"nodeid\": 8, \"leaf\": 0.195749417 , \"cover\": 1.30483067 }\n      ]}, \n      { \"nodeid\": 4, \"depth\": 2, \"split\": \"f4\", \"split_condition\": 0.996667147, \"yes\": 9, \"no\": 10, \"missing\": 10 , \"gain\": 0.136149645, \"cover\": 5.52799463, \"children\": [\n        { \"nodeid\": 9, \"leaf\": 0.205232874 , \"cover\": 1.61055708 }, \n        { \"nodeid\": 10, \"depth\": 3, \"split\": \"f2\", \"split_condition\": 0.482935965, \"yes\": 15, \"no\": 16, \"missing\": 16 , \"gain\": 0.243471354, \"cover\": 3.91743755, \"children\": [\n          { \"nodeid\": 15, \"leaf\": -0.0207790881 , \"cover\": 1.33168411 }, \n          { \"nodeid\": 16, \"leaf\": 0.116405301 , \"cover\": 2.58575368 }\n        ]}\n      ]}\n    ]}, \n    { \"nodeid\": 2, \"depth\": 1, \"split\": \"f0\", \"split_condition\": 0.735190094, \"yes\": 5, \"no\": 6, \"missing\": 6 , \"gain\": 0.136490345, \"cover\": 6.87254906, \"children\": [\n      { \"nodeid\": 5, \"depth\": 2, \"split\": \"f4\", \"split_condition\": 0.118842177, \"yes\": 11, \"no\": 12, \"missing\": 11 , \"gain\": 0.418967426, \"cover\": 4.64406824, \"children\": [\n        { \"nodeid\": 11, \"depth\": 3, \"split\": \"f1\", \"split_condition\": 0.161696807, \"yes\": 17, \"no\": 18, \"missing\": 17 , \"gain\": 0.80835098, \"cover\": 3.43579435, \"children\": [\n          { \"nodeid\": 17, \"leaf\": -0.0689070448 , \"cover\": 2.37847805 }, \n          { \"nodeid\": 18, \"leaf\": 0.170568824 , \"cover\": 1.05731642 }\n        ]}, \n        { \"nodeid\": 12, \"leaf\": 0.203879684 , \"cover\": 1.20827377 }\n      ]}, \n      { \"nodeid\": 6, \"leaf\": 0.236047342 , \"cover\": 2.22848082 }\n    ]}\n  ]}",
+   "  { \"nodeid\": 0, \"depth\": 0, \"split\": \"f4\", \"split_condition\": 0.124481127, \"yes\": 1, \"no\": 2, \"missing\": 1 , \"gain\": 1.80937409, \"cover\": 25.09832, \"children\": [\n    { \"nodeid\": 1, \"depth\": 1, \"split\": \"f5\", \"split_condition\": 0.617926002, \"yes\": 3, \"no\": 4, \"missing\": 3 , \"gain\": 1.50634825, \"cover\": 16.9828854, \"children\": [\n      { \"nodeid\": 3, \"depth\": 2, \"split\": \"f2\", \"split_condition\": 0.135911524, \"yes\": 7, \"no\": 8, \"missing\": 7 , \"gain\": 1.7121079, \"cover\": 15.4473801, \"children\": [\n        { \"nodeid\": 7, \"depth\": 3, \"split\": \"f1\", \"split_condition\": 0.555052817, \"yes\": 9, \"no\": 10, \"missing\": 9 , \"gain\": 1.90705216, \"cover\": 10.494895, \"children\": [\n          { \"nodeid\": 9, \"leaf\": -0.166623771 , \"cover\": 8.79052448 }, \n          { \"nodeid\": 10, \"leaf\": 0.127378687 , \"cover\": 1.70437002 }\n        ]}, \n        { \"nodeid\": 8, \"depth\": 3, \"split\": \"f3\", \"split_condition\": 0.984801948, \"yes\": 11, \"no\": 12, \"missing\": 12 , \"gain\": 0.341694176, \"cover\": 4.95248508, \"children\": [\n          { \"nodeid\": 11, \"leaf\": 0.164050937 , \"cover\": 1.80580664 }, \n          { \"nodeid\": 12, \"leaf\": 0.0147167621 , \"cover\": 3.14667869 }\n        ]}\n      ]}, \n      { \"nodeid\": 4, \"leaf\": 0.202046454 , \"cover\": 1.53550458 }\n    ]}, \n    { \"nodeid\": 2, \"depth\": 1, \"split\": \"f1\", \"split_condition\": 0.23954758, \"yes\": 5, \"no\": 6, \"missing\": 6 , \"gain\": 0.23551774, \"cover\": 8.11543655, \"children\": [\n      { \"nodeid\": 5, \"leaf\": 0.0200699959 , \"cover\": 1.37592912 }, \n      { \"nodeid\": 6, \"leaf\": 0.17154859 , \"cover\": 6.7395072 }\n    ]}\n  ]}",
+   "  { \"nodeid\": 0, \"depth\": 0, \"split\": \"f0\", \"split_condition\": 0.272985965, \"yes\": 1, \"no\": 2, \"missing\": 1 , \"gain\": 1.60826218, \"cover\": 23.6188107, \"children\": [\n    { \"nodeid\": 1, \"depth\": 1, \"split\": \"f3\", \"split_condition\": 0.261998504, \"yes\": 3, \"no\": 4, \"missing\": 3 , \"gain\": 1.74956167, \"cover\": 17.6819973, \"children\": [\n      { \"nodeid\": 3, \"depth\": 2, \"split\": \"f2\", \"split_condition\": 0.75854212, \"yes\": 7, \"no\": 8, \"missing\": 7 , \"gain\": 1.59306908, \"cover\": 12.6679745, \"children\": [\n        { \"nodeid\": 7, \"depth\": 3, \"split\": \"f5\", \"split_condition\": 0.62543565, \"yes\": 13, \"no\": 14, \"missing\": 13 , \"gain\": 1.81337583, \"cover\": 11.6084623, \"children\": [\n          { \"nodeid\": 13, \"leaf\": -0.143741086 , \"cover\": 10.5381813 }, \n          { \"nodeid\": 14, \"leaf\": 0.17032662 , \"cover\": 1.07028174 }\n        ]}, \n        { \"nodeid\": 8, \"leaf\": 0.185211271 , \"cover\": 1.0595113 }\n      ]}, \n      { \"nodeid\": 4, \"depth\": 2, \"split\": \"f5\", \"split_condition\": 0.367344201, \"yes\": 9, \"no\": 10, \"missing\": 10 , \"gain\": 0.267186761, \"cover\": 5.01402378, \"children\": [\n        { \"nodeid\": 9, \"leaf\": -0.00665353611 , \"cover\": 1.02544415 }, \n        { \"nodeid\": 10, \"leaf\": 0.155301839 , \"cover\": 3.98857951 }\n      ]}\n    ]}, \n    { \"nodeid\": 2, \"depth\": 1, \"split\": \"f5\", \"split_condition\": 0.989580333, \"yes\": 5, \"no\": 6, \"missing\": 6 , \"gain\": 0.0550332069, \"cover\": 5.93681288, \"children\": [\n      { \"nodeid\": 5, \"leaf\": 0.223126516 , \"cover\": 1.70300257 }, \n      { \"nodeid\": 6, \"depth\": 2, \"split\": \"f1\", \"split_condition\": 0.120001704, \"yes\": 11, \"no\": 12, \"missing\": 11 , \"gain\": 0.351952434, \"cover\": 4.23381042, \"children\": [\n        { \"nodeid\": 11, \"depth\": 3, \"split\": \"f0\", \"split_condition\": 0.606410861, \"yes\": 15, \"no\": 16, \"missing\": 16 , \"gain\": 0.210150272, \"cover\": 2.57757759, \"children\": [\n          { \"nodeid\": 15, \"leaf\": -0.0519886836 , \"cover\": 1.35105252 }, \n          { \"nodeid\": 16, \"leaf\": 0.0771241859 , \"cover\": 1.22652519 }\n        ]}, \n        { \"nodeid\": 12, \"leaf\": 0.17546007 , \"cover\": 1.6562326 }\n      ]}\n    ]}\n  ]}"
+  ],
+  "model_json": "model.json",
+  "model_ubj": "model.ubj"
+ }
+}
