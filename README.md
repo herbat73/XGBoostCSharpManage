@@ -29,22 +29,28 @@ That rounding changed the tree weights in the last bit, and the port now reprodu
 ```csharp
 using XGBoost;
 
-using var train = DMatrix.FromDense(x, rows, cols);   // row-major float[]
-train.Label = y;
+const string fileFormat = "?format=libsvm";
+
+var outputModelFile = "model-0.json";
+var pathToTrainData = "agaricus.txt.train";
+var train = DMatrix.FromFile($"{pathToTrainData}{fileFormat}");
+var pathToTestData = "agaricus.txt.test";
+var test = DMatrix.FromFile($"{pathToTestData}{fileFormat}");
+
+(DMatrix, string)[] watchlist = [(test, "eval"), (train, "train")];
 
 var parameters = new Dictionary<string, string>
 {
     ["objective"] = "binary:logistic",
-    ["max_depth"] = "4",
+    ["max_depth"] = "2",
     ["eta"] = "0.1",
 };
 
 using var booster = XGB.Train(parameters, train, numBoostRound: 200,
-    evals: [(train, "train"), (valid, "valid")], earlyStoppingRounds: 10,
+    evals: watchlist, earlyStoppingRounds: 10,
     onIteration: (i, r) => Console.WriteLine($"{i}: {string.Join(", ", r)}"));
 
-float[] probabilities = booster.InplacePredict(xTest, testRows, cols).Values;
-booster.Save("model.json");   // loadable from Python: xgb.Booster(model_file="model.json")
+booster.Save(outputModelFile);
 ```
 
 More examples: [demos](demos/README.md) has C# ports of the Python demos in `demo/`
