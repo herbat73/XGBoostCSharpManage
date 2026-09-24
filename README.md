@@ -3,9 +3,9 @@
 
 The C# port for the [XGBoost](https://github.com/dmlc/xgboost) C API (`include/xgboost/c_api.h`), targeting .NET 10.
 
-It is fully managed .NET 10 (net10.0) code with no P/Invoke or native library of any kind. 
+It is fully managed .NET 10 (net10.0) code with no Platform Invocation Services (P/Invoke) or native library of any kind. 
 
-How it's tested: tests/XGBoost.Managed.Tests runs the existing csharp-package tests and their Python-generated fixtures unchanged, against the managed engine instead of xgboost.dll. All 13 Python parity cases match. They cover hist, approx, exact, DART, gblinear, categorical, multi-output, softprob, quantile, rank:ndcg, survival:aft, custom objective and early stopping. For each case the tests check predictions, SHAP contributions, leaf indices, eval metrics, the saved JSON/UBJ model and the text dumps. These tests always run with one thread (nthread=1). With more threads, histogram sums are added in a different order, so results can differ in the last bits. That is also true of the native library.
+How it's tested: tests/XGBoost.Managed.Tests runs the existing csharp-package tests and their Python-generated original fixtures unchanged, against the managed engine instead of xgboost.dll. All 13 Python parity cases match. They cover hist, approx, exact, DART, gblinear, categorical, multi-output, softprob, quantile, rank:ndcg, survival:aft, custom objective and early stopping. For each case the tests check predictions, SHAP contributions, leaf indices, eval metrics, the saved JSON/UBJ model and the text dumps. These tests always run with one thread (nthread=1). With more threads, histogram sums are added in a different order, so results can differ in the last bits. That is also true of the native library.
 
 What's ported:
 - Core: objectives, metrics, the CPU predictor and SHAP.
@@ -50,8 +50,17 @@ using var booster = XGB.Train(parameters, train, numBoostRound: 200,
     evals: watchlist, earlyStoppingRounds: 10,
     onIteration: (i, r) => Console.WriteLine($"{i}: {string.Join(", ", r)}"));
 
+// run prediction
+var prediction = booster.Predict(test).Values;
+
+var labels = test.Label;
+var errors = prediction.Where((p, i) => (p > 0.5 ? 1 : 0) != labels[i]).Count();
+Console.WriteLine($"error={(double)errors / prediction.Length:F6}");
+
 booster.Save(outputModelFile);
 ```
+
+This simply example you can run by execute `GetStarted/` project.
 
 More examples: [demos](demos/README.md) has C# ports of the Python demos in `demo/`
 (`cd demos/XGBoost.Managed.Demos && dotnet run -- all`).

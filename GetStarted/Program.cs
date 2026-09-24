@@ -3,7 +3,7 @@
 const string fileFormat = "?format=libsvm";
 
 var dir = new DirectoryInfo(Directory.GetCurrentDirectory());
-var outputModelFile = Path.Combine(dir.FullName, "model-0.json");
+var outputModelFile = Path.Combine(dir.FullName, "model.json");
 var dataDir = Path.Combine(dir.FullName, @"..\..\..\..\", "demos", "data");
 var pathToTrainData = Path.Combine(dataDir, "agaricus.txt.train");
 var train = DMatrix.FromFile($"{pathToTrainData}{fileFormat}");
@@ -22,6 +22,13 @@ var parameters = new Dictionary<string, string>
 using var booster = XGB.Train(parameters, train, numBoostRound: 200,
     evals: watchlist, earlyStoppingRounds: 10,
     onIteration: (i, r) => Console.WriteLine($"{i}: {string.Join(", ", r)}"));
+
+// run prediction
+var prediction = booster.Predict(test).Values;
+
+var labels = test.Label;
+var errors = prediction.Where((p, i) => (p > 0.5 ? 1 : 0) != labels[i]).Count();
+Console.WriteLine($"error={(double)errors / prediction.Length:F6}");
 
 booster.Save(outputModelFile);
 
