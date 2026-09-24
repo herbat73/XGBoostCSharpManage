@@ -1,3 +1,6 @@
+[![](https://img.shields.io/badge/License-APACHE2-green.svg 'Apache 2 License')](https://opensource.org/license/apache-2.0)
+[![Build](https://github.com/herbat73/XGBoostCSharpManage/actions/workflows/dotnet_build_and_test.yml/badge.svg)](https://github.com/herbat73/XGBoostCSharpManage/actions/workflows/dotnet_build_and_test.yml)
+
 The C# port for the [XGBoost](https://github.com/dmlc/xgboost) C API (`include/xgboost/c_api.h`), targeting .NET 10.
 
 It is fully managed .NET 10 (net10.0) code with no P/Invoke or native library of any kind. 
